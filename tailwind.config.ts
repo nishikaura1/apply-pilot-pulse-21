@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,31 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// ApplyPilot custom colors
+				"pilot-blue": {
+					50: "#e6f0ff",
+					100: "#cce0ff",
+					200: "#99c2ff",
+					300: "#66a3ff",
+					400: "#3385ff",
+					500: "#0066ff",
+					600: "#0052cc",
+					700: "#003d99",
+					800: "#002966",
+					900: "#001433",
+				},
+				"pilot-purple": {
+					50: "#f2e6ff",
+					100: "#e6ccff",
+					200: "#cc99ff",
+					300: "#b366ff",
+					400: "#9933ff",
+					500: "#8000ff",
+					600: "#6600cc",
+					700: "#4d0099",
+					800: "#330066",
+					900: "#1a0033",
 				}
 			},
 			borderRadius: {
@@ -84,11 +110,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-slow': 'pulse-slow 3s infinite ease-in-out',
+				'float': 'float 6s infinite ease-in-out',
 			}
 		}
 	},
