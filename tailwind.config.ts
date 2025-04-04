@@ -63,31 +63,43 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// ApplyPilot custom colors
-				"pilot-blue": {
-					50: "#e6f0ff",
-					100: "#cce0ff",
-					200: "#99c2ff",
-					300: "#66a3ff",
-					400: "#3385ff",
-					500: "#0066ff",
-					600: "#0052cc",
-					700: "#003d99",
-					800: "#002966",
-					900: "#001433",
+				// New modern student-friendly colors
+				"student-teal": {
+					50: "#e6f7f7",
+					100: "#ccefef",
+					200: "#99dfdf",
+					300: "#66cfcf",
+					400: "#33bfbf",
+					500: "#00afaf",
+					600: "#008c8c",
+					700: "#006969",
+					800: "#004646",
+					900: "#002323",
 				},
-				"pilot-purple": {
+				"student-purple": {
 					50: "#f2e6ff",
-					100: "#e6ccff",
-					200: "#cc99ff",
-					300: "#b366ff",
-					400: "#9933ff",
-					500: "#8000ff",
-					600: "#6600cc",
-					700: "#4d0099",
-					800: "#330066",
-					900: "#1a0033",
-				}
+					100: "#e4ccff",
+					200: "#c999ff",
+					300: "#af66ff",
+					400: "#9433ff",
+					500: "#7a00ff",
+					600: "#6200cc",
+					700: "#490099",
+					800: "#310066",
+					900: "#180033",
+				},
+				"student-pink": {
+					50: "#ffe6f2",
+					100: "#ffcce6",
+					200: "#ff99cc",
+					300: "#ff66b3",
+					400: "#ff3399",
+					500: "#ff0080",
+					600: "#cc0066",
+					700: "#99004d",
+					800: "#660033",
+					900: "#33001a",
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -118,6 +130,10 @@ export default {
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' },
+				},
+				'bounce-slight': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-6px)' },
 				}
 			},
 			animation: {
@@ -125,6 +141,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-slow': 'pulse-slow 3s infinite ease-in-out',
 				'float': 'float 6s infinite ease-in-out',
+				'bounce-slight': 'bounce-slight 2.5s infinite ease-in-out',
 			}
 		}
 	},

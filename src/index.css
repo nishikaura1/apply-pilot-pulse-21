@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 210 50% 98%;
+    --background: 180 50% 99%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,26 +14,26 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 224 84% 33%;
+    --primary: 270 100% 50%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 270 100% 50%;
+    --secondary: 180 100% 35%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 270 20% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 270 80% 93%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 330 85% 70%;
+    --accent-foreground: 330 100% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 270 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -46,24 +46,24 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 270 100% 65%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 270 100% 60%;
+    --secondary: 180 100% 40%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 330 85% 65%;
+    --accent-foreground: 330 100% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 270 100% 65%;
   }
 }
 
@@ -80,10 +80,26 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-pilot-blue-500 to-pilot-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-student-purple-500 to-student-pink-400 bg-clip-text text-transparent;
+  }
+
+  .modern-gradient-bg {
+    @apply bg-gradient-to-r from-student-purple-500 via-student-purple-400 to-student-pink-400;
   }
 
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .feature-card {
+    @apply rounded-xl border border-student-teal-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-student-teal-200;
+  }
+  
+  .button-primary {
+    @apply bg-gradient-to-r from-student-purple-500 to-student-pink-400 text-white font-medium rounded-lg px-6 py-3 shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-student-purple-400;
+  }
+  
+  .button-secondary {
+    @apply bg-white text-gray-700 font-medium rounded-lg border border-gray-200 px-6 py-3 shadow-sm hover:shadow-md transform transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-student-purple-200;
   }
 }
