@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 270 30% 98%;
+    --background: 43 38% 97%;
     --foreground: 224 71% 4%;
 
     --card: 0 0% 100%;
@@ -37,33 +37,33 @@
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 213 31% 91%;
+    --background: 35 30% 94%;
+    --foreground: 213 31% 15%;
 
-    --card: 223 47% 13%;
-    --card-foreground: 213 31% 91%;
+    --card: 35 25% 97%;
+    --card-foreground: 213 31% 15%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 35 30% 94%;
+    --popover-foreground: 213 31% 15%;
 
-    --primary: 260 100% 70%;
+    --primary: 260 90% 65%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 196 80% 47%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 196 80% 45%;
+    --secondary-foreground: 35 30% 94%;
 
-    --muted: 223 47% 16%;
-    --muted-foreground: 215 20% 75%;
+    --muted: 35 20% 86%;
+    --muted-foreground: 215 15% 35%;
 
-    --accent: 330 85% 60%;
+    --accent: 330 85% 65%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 63.8% 36%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-    --ring: 260 100% 70%;
+    --border: 35 25% 80%;
+    --input: 35 25% 80%;
+    --ring: 260 90% 65%;
   }
 }
 
@@ -80,7 +80,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-student-purple-400 to-student-pink-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-student-purple-500 to-student-pink-500 bg-clip-text text-transparent;
   }
 
   .modern-gradient-bg {
@@ -92,7 +92,7 @@
   }
   
   .feature-card {
-    @apply rounded-xl border border-student-teal-200/20 bg-card/50 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-student-teal-300/30;
+    @apply rounded-xl border border-student-teal-200/30 bg-card/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-student-teal-300/40;
   }
   
   .button-primary {
@@ -104,7 +104,7 @@
   }
 
   .dark .feature-card {
-    @apply border-blue-900/30 bg-card/80 shadow-lg shadow-blue-900/20;
+    @apply border-student-teal-900/20 bg-card/90 shadow-sm;
   }
 
   .dark .button-secondary {
@@ -112,11 +112,11 @@
   }
 
   .glass-card {
-    @apply bg-white/10 dark:bg-blue-950/40 backdrop-blur-lg border border-white/20 dark:border-blue-500/20 rounded-xl;
+    @apply bg-white/30 backdrop-blur-lg border border-white/40 rounded-xl shadow-sm;
   }
   
-  .dark-gradient-bg {
-    @apply bg-gradient-to-b from-blue-950 to-student-purple-900;
+  .cream-gradient-bg {
+    @apply bg-gradient-to-b from-amber-50 to-orange-50;
   }
   
   .glow {
@@ -124,6 +124,6 @@
   }
   
   .glow:after {
-    @apply content-[''] absolute -z-10 top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-blue-600/20 to-student-purple-600/20 rounded-xl blur-xl opacity-70;
+    @apply content-[''] absolute -z-10 top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-student-purple-600/10 to-student-teal-600/10 rounded-xl blur-xl opacity-70;
   }
 }
