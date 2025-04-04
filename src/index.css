@@ -37,33 +37,33 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
+    --background: 222 47% 11%;
     --foreground: 213 31% 91%;
 
-    --card: 224 71% 6%;
+    --card: 223 47% 13%;
     --card-foreground: 213 31% 91%;
 
-    --popover: 224 71% 4%;
+    --popover: 222 47% 11%;
     --popover-foreground: 213 31% 91%;
 
-    --primary: 270 100% 60%;
+    --primary: 260 100% 70%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 180 100% 30%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 196 80% 47%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215 20% 70%;
+    --muted: 223 47% 16%;
+    --muted-foreground: 215 20% 75%;
 
     --accent: 330 85% 60%;
-    --accent-foreground: 330 100% 98%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 270 100% 60%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 260 100% 70%;
   }
 }
 
@@ -80,11 +80,11 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-student-purple-500 to-student-pink-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-student-purple-400 to-student-pink-400 bg-clip-text text-transparent;
   }
 
   .modern-gradient-bg {
-    @apply bg-gradient-to-r from-student-purple-500 via-student-purple-400 to-student-pink-400;
+    @apply bg-gradient-to-r from-student-purple-400 via-blue-500 to-student-teal-500;
   }
 
   .card-hover {
@@ -104,11 +104,26 @@
   }
 
   .dark .feature-card {
-    @apply border-student-purple-900/40 bg-card/80 shadow-lg shadow-student-purple-900/10;
+    @apply border-blue-900/30 bg-card/80 shadow-lg shadow-blue-900/20;
+  }
+
+  .dark .button-secondary {
+    @apply bg-muted text-foreground border-muted-foreground/20;
   }
 
   .glass-card {
-    @apply bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl;
+    @apply bg-white/10 dark:bg-blue-950/40 backdrop-blur-lg border border-white/20 dark:border-blue-500/20 rounded-xl;
+  }
+  
+  .dark-gradient-bg {
+    @apply bg-gradient-to-b from-blue-950 to-student-purple-900;
+  }
+  
+  .glow {
+    @apply relative;
+  }
+  
+  .glow:after {
+    @apply content-[''] absolute -z-10 top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-blue-600/20 to-student-purple-600/20 rounded-xl blur-xl opacity-70;
   }
 }
-
