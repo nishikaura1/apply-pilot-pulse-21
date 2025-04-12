@@ -1,70 +1,80 @@
 
 import React from "react";
 import { BarChart3, Award, Clock, Users, Bell } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const Features = () => {
   const features = [
     {
-      icon: <BarChart3 className="h-12 w-12 text-student-purple-400 p-2 bg-student-purple-950/50 rounded-xl" />,
+      icon: <BarChart3 className="h-12 w-12 text-primary p-2 rounded-xl" />,
       title: "Live Heatmap",
-      description: "Track trending roles with real-time data on application volume and competition.",
-      gradient: "from-blue-900/50 to-student-purple-900/50",
+      description: "Track trending roles in real-time",
+      hoverDescription: "Visualize application volume and competition for roles across industries",
+      gradient: "from-primary/20 to-primary/5",
     },
     {
-      icon: <Award className="h-12 w-12 text-student-pink-400 p-2 bg-student-pink-950/50 rounded-xl" />,
+      icon: <Award className="h-12 w-12 text-accent p-2 rounded-xl" />,
       title: "Resume Ranking",
-      description: "See how your resume scores against other applicants and get tips to reach the top 10%.",
-      gradient: "from-student-pink-900/50 to-student-purple-900/50",
+      description: "Get to the top 10%",
+      hoverDescription: "See how your resume scores against other applicants with AI-powered analysis",
+      gradient: "from-accent/20 to-accent/5",
     },
     {
-      icon: <Clock className="h-12 w-12 text-student-teal-400 p-2 bg-student-teal-950/50 rounded-xl" />,
+      icon: <Clock className="h-12 w-12 text-secondary p-2 rounded-xl" />,
       title: "Hiring Velocity",
-      description: "Discover companies with the fastest response times from application to offer.",
-      gradient: "from-blue-900/50 to-student-teal-900/50",
+      description: "Find fast-responding companies",
+      hoverDescription: "Discover employers with the quickest application-to-offer timelines",
+      gradient: "from-secondary/20 to-secondary/5",
     },
     {
-      icon: <Users className="h-12 w-12 text-student-purple-400 p-2 bg-student-purple-950/50 rounded-xl" />,
+      icon: <Users className="h-12 w-12 text-primary p-2 rounded-xl" />,
       title: "Referral Network",
-      description: "Map your connections to find referral opportunities at target companies.",
-      gradient: "from-blue-900/50 to-student-purple-900/50",
+      description: "Connect to opportunities",
+      hoverDescription: "Map your professional connections to find referrals at target companies",
+      gradient: "from-primary/20 to-primary/5",
     },
     {
-      icon: <Bell className="h-12 w-12 text-student-pink-400 p-2 bg-student-pink-950/50 rounded-xl" />,
+      icon: <Bell className="h-12 w-12 text-accent p-2 rounded-xl" />,
       title: "Low Competition Alerts",
-      description: "Get notified about promising opportunities with fewer applicants.",
-      gradient: "from-student-pink-900/50 to-student-purple-900/50",
+      description: "Get notified of opportunities",
+      hoverDescription: "Receive alerts about promising positions with fewer applicants",
+      gradient: "from-accent/20 to-accent/5",
     },
   ];
 
   return (
-    <div className="dark-gradient-bg py-20 md:py-32">
+    <div className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-blue-950 text-blue-300 font-medium text-sm mb-4 border border-blue-800">
-            Power Your Job Search
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Market Intelligence for <span className="gradient-text">Smart Job Seekers</span>
           </h2>
-          <p className="text-lg text-blue-200">
-            ApplyPilot provides real-time insights to help you make strategic decisions
-            about where to focus your job search efforts.
+          <p className="text-foreground/80">
+            Real-time insights to focus your job search where it matters
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <Card key={index} className={`overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 glow bg-blue-950/50`}>
-              <div className={`h-2 w-full bg-gradient-to-r ${feature.gradient}`}></div>
-              <CardHeader>
-                <div className="mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-blue-200">{feature.description}</CardDescription>
-              </CardContent>
-            </Card>
+            <HoverCard key={index}>
+              <HoverCardTrigger asChild>
+                <Card className={`overflow-hidden border border-border/30 bg-gradient-to-br ${feature.gradient} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer h-[220px]`}>
+                  <div className="h-1 w-full bg-gradient-to-r from-primary/50 to-accent/30"></div>
+                  <CardContent className="p-6 flex flex-col items-center justify-center h-full text-center">
+                    <div className="mb-4 bg-background/10 p-3 rounded-full">{feature.icon}</div>
+                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-foreground/70 text-sm">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80 p-4 bg-card border border-border/50">
+                <div className="flex flex-col space-y-2">
+                  <h4 className="font-semibold">{feature.title}</h4>
+                  <p className="text-sm text-foreground/80">{feature.hoverDescription}</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           ))}
         </div>
       </div>
