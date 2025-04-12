@@ -35,13 +35,13 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 max-w-3xl mx-auto">
           <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            AI-Powered Career Platform for International Students
+            Career Platform for All College Students
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Navigate Your <span className="gradient-text">Career Path</span> With Confidence
           </h1>
           <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-            Empowering international students to find visa-friendly jobs and navigate OPT, CPT, and H1B pathways with ease.
+            Empowering college students at every stage to find the perfect job opportunities tailored to their academic level and background.
           </p>
         </div>
 
@@ -50,10 +50,10 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="grid grid-cols-2 gap-4">
               {[
-                "Find visa-friendly positions",
-                "Compare your resume with others",
-                "Discover responsive companies",
-                "Access valuable referrals"
+                "Freshman-friendly positions",
+                "Specialized opportunities",
+                "Internships for all levels",
+                "Campus recruitment access"
               ].map((benefit, index) => (
                 <div key={index} className="flex items-start space-x-3 bg-card/40 p-4 rounded-xl backdrop-blur-sm border border-border/30">
                   <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -73,40 +73,40 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Stats Card */}
+          {/* Right Column - Stats Cards */}
           <div className="relative">
             <div className="absolute -left-10 -top-10 w-32 h-32 bg-accent/5 rounded-full blur-3xl"></div>
             <div className="absolute -right-10 bottom-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
             
             <div className="glass-card bg-card/40 border border-border/30 p-6 rounded-2xl backdrop-blur-sm shadow-lg relative z-10">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="font-bold text-xl gradient-text">Success Metrics</h3>
-                <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">International Focus</span>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-background/20 p-4 rounded-xl">
-                  <div className="text-3xl font-bold mb-1 gradient-text">87%</div>
-                  <p className="text-xs text-foreground/70">Job placement rate</p>
+              <div className="grid grid-cols-1 gap-6">
+                <div>
+                  <h3 className="font-bold text-xl mb-4">Overall Success Metrics</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-background/20 p-4 rounded-xl">
+                      <div className="text-3xl font-bold mb-1 gradient-text">93%</div>
+                      <p className="text-xs text-foreground/70">Job placement rate</p>
+                    </div>
+                    <div className="bg-background/20 p-4 rounded-xl">
+                      <div className="text-3xl font-bold mb-1 gradient-text">700+</div>
+                      <p className="text-xs text-foreground/70">Partner companies</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-background/20 p-4 rounded-xl">
-                  <div className="text-3xl font-bold mb-1 gradient-text">500+</div>
-                  <p className="text-xs text-foreground/70">Visa-friendly companies</p>
+                
+                <div>
+                  <h3 className="font-bold text-xl mb-4">International Student Metrics</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-background/20 p-4 rounded-xl">
+                      <div className="text-3xl font-bold mb-1 gradient-text">87%</div>
+                      <p className="text-xs text-foreground/70">Visa-friendly placement</p>
+                    </div>
+                    <div className="bg-background/20 p-4 rounded-xl">
+                      <div className="text-3xl font-bold mb-1 gradient-text">500+</div>
+                      <p className="text-xs text-foreground/70">Sponsoring companies</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-background/20 p-4 rounded-xl">
-                  <div className="text-3xl font-bold mb-1 gradient-text">3x</div>
-                  <p className="text-xs text-foreground/70">More interviews</p>
-                </div>
-                <div className="bg-background/20 p-4 rounded-xl">
-                  <div className="text-3xl font-bold mb-1 gradient-text">42%</div>
-                  <p className="text-xs text-foreground/70">Higher salary offers</p>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <Button variant="link" className="text-primary font-medium w-full text-sm">
-                  Learn more about our platform →
-                </Button>
               </div>
             </div>
           </div>
