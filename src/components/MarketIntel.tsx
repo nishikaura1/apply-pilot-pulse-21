@@ -51,10 +51,10 @@ const MarketIntel = () => {
                       }}
                     >
                       <div>
-                        <div className="font-medium text-gray-900">{role.title}</div>
-                        <div className="text-sm text-gray-700">{role.companies} companies hiring</div>
+                        <div className="font-medium text-white">{role.title}</div>
+                        <div className="text-sm text-gray-300">{role.companies} companies hiring</div>
                       </div>
-                      <div className="text-pilot-blue-600 font-bold">{role.change}</div>
+                      <div className="text-white font-bold">{role.change}</div>
                     </div>
                   ))}
               </div>
@@ -67,13 +67,13 @@ const MarketIntel = () => {
                   .map((role, index) => (
                     <div 
                       key={index} 
-                      className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-gray-100 to-gray-200"
+                      className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-red-900/20 to-red-900/10"
                     >
                       <div>
-                        <div className="font-medium text-gray-900">{role.title}</div>
-                        <div className="text-sm text-gray-700">{role.companies} companies hiring</div>
+                        <div className="font-medium text-red-200">{role.title}</div>
+                        <div className="text-sm text-red-300">{role.companies} companies hiring</div>
                       </div>
-                      <div className="text-red-500 font-bold">{role.change}</div>
+                      <div className="text-red-100 font-bold">{role.change}</div>
                     </div>
                   ))}
               </div>
