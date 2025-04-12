@@ -2,10 +2,10 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+// Remove AcademicLevelFilter import
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Footer from "@/components/Footer";
-import AcademicLevelFilter from "@/components/AcademicLevelFilter";
 import InternationalSection from "@/components/InternationalSection";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
@@ -17,7 +17,7 @@ const Index = () => {
       
       <main className="flex-grow">
         <Hero />
-        <AcademicLevelFilter />
+        {/* Remove AcademicLevelFilter component */}
         <Features />
         <HowItWorks />
         <InternationalSection />
