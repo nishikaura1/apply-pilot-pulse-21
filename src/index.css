@@ -37,23 +37,23 @@
   }
 
   .dark {
-    --background: 35 30% 94%;
-    --foreground: 213 31% 15%;
+    --background: 222 47% 11%;
+    --foreground: 213 31% 91%;
 
-    --card: 35 25% 97%;
-    --card-foreground: 213 31% 15%;
+    --card: 222 47% 15%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 35 30% 94%;
-    --popover-foreground: 213 31% 15%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 213 31% 91%;
 
-    --primary: 260 90% 65%;
+    --primary: 263 90% 65%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 196 80% 45%;
-    --secondary-foreground: 35 30% 94%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 35 20% 86%;
-    --muted-foreground: 215 15% 35%;
+    --muted: 223 47% 20%;
+    --muted-foreground: 215 15% 65%;
 
     --accent: 330 85% 65%;
     --accent-foreground: 210 40% 98%;
@@ -61,9 +61,9 @@
     --destructive: 0 63.8% 36%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 35 25% 80%;
-    --input: 35 25% 80%;
-    --ring: 260 90% 65%;
+    --border: 223 47% 25%;
+    --input: 223 47% 25%;
+    --ring: 263 90% 65%;
   }
 }
 
@@ -92,7 +92,7 @@
   }
   
   .feature-card {
-    @apply rounded-xl border border-student-teal-200/30 bg-card/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-student-teal-300/40;
+    @apply rounded-xl border border-student-teal-200/30 bg-card/90 backdrop-blur-sm p-4 shadow-sm transition-all duration-300 hover:shadow-md hover:border-student-teal-300/40;
   }
   
   .button-primary {
@@ -100,23 +100,11 @@
   }
   
   .button-secondary {
-    @apply bg-white text-gray-700 font-medium rounded-lg border border-gray-200 px-6 py-3 shadow-sm hover:shadow-md transform transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-student-purple-200;
-  }
-
-  .dark .feature-card {
-    @apply border-student-teal-900/20 bg-card/90 shadow-sm;
-  }
-
-  .dark .button-secondary {
-    @apply bg-muted text-foreground border-muted-foreground/20;
+    @apply bg-card text-foreground font-medium rounded-lg border border-border px-6 py-3 shadow-sm hover:shadow-md transform transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-student-purple-200;
   }
 
   .glass-card {
-    @apply bg-white/30 backdrop-blur-lg border border-white/40 rounded-xl shadow-sm;
-  }
-  
-  .cream-gradient-bg {
-    @apply bg-gradient-to-b from-amber-50 to-orange-50;
+    @apply bg-card/70 backdrop-blur-lg border border-border rounded-xl shadow-sm;
   }
   
   .glow {
