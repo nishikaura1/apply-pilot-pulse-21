@@ -3,6 +3,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, User, Building, FileCheck, Globe } from "lucide-react";
@@ -16,6 +17,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
+        <HowItWorks />
         
         {/* International Student Focus */}
         <section className="py-16 md:py-24">
