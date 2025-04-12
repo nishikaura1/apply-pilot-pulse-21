@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/providers/theme-provider";
 import { Moon, Sun } from "lucide-react";
+import { Toggle } from "@/components/ui/toggle";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header className="border-b border-border/30 bg-background/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
@@ -33,11 +38,11 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-3">
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full"
+          <Toggle 
+            pressed={theme === "dark"}
+            onPressedChange={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-full p-2"
           >
             {theme === "dark" ? (
               <Sun className="h-5 w-5" />
@@ -45,7 +50,7 @@ const Header = () => {
               <Moon className="h-5 w-5" />
             )}
             <span className="sr-only">Toggle theme</span>
-          </Button>
+          </Toggle>
           
           <Button variant="ghost" className="hidden md:inline-flex text-foreground/80 hover:text-primary">
             Sign In
