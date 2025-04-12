@@ -72,12 +72,6 @@ const Header = () => {
                   Referral Network
                 </Link>
               </NavigationMenuItem>
-              
-              <NavigationMenuItem>
-                <Link to="/international" className={navigationMenuTriggerStyle()}>
-                  International
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </nav>

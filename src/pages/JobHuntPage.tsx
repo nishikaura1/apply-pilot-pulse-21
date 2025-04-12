@@ -1,12 +1,65 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, CheckCircle, Calendar as CalendarIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, CheckCircle, Calendar as CalendarIcon, Globe, Filter } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const JobHuntPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isInternational, setIsInternational] = useState(searchParams.get('international') === 'true');
+  const [academicLevel, setAcademicLevel] = useState(searchParams.get('level') || 'all');
+
+  // Update the UI based on URL parameters when page loads
+  useEffect(() => {
+    const level = searchParams.get('level');
+    const international = searchParams.get('international');
+    
+    if (level) {
+      setAcademicLevel(level);
+    }
+    
+    if (international === 'true') {
+      setIsInternational(true);
+    }
+  }, [searchParams]);
+
+  // Update URL when filters change
+  const updateFilters = (level, international) => {
+    const params = new URLSearchParams();
+    
+    if (level && level !== 'all') {
+      params.set('level', level);
+    }
+    
+    if (international) {
+      params.set('international', 'true');
+    }
+    
+    setSearchParams(params);
+  };
+
+  const handleLevelChange = (value) => {
+    setAcademicLevel(value);
+    updateFilters(value, isInternational);
+  };
+
+  const toggleInternational = () => {
+    const newValue = !isInternational;
+    setIsInternational(newValue);
+    updateFilters(academicLevel, newValue);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -20,6 +73,34 @@ const JobHuntPage = () => {
             </p>
           </div>
           
+          <div className="mb-6 flex flex-wrap gap-4 items-center">
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium">Academic Level:</span>
+              <Select value={academicLevel} onValueChange={handleLevelChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Levels</SelectItem>
+                  <SelectItem value="freshman">Freshman</SelectItem>
+                  <SelectItem value="sophomore">Sophomore</SelectItem>
+                  <SelectItem value="junior">Junior</SelectItem>
+                  <SelectItem value="senior">Senior</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <Button 
+              variant={isInternational ? "default" : "outline"} 
+              className="flex items-center gap-2"
+              onClick={toggleInternational}
+            >
+              <Globe className="h-4 w-4" />
+              International
+              {isInternational && <Badge variant="secondary" className="ml-1">On</Badge>}
+            </Button>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
               <Card>
@@ -27,6 +108,12 @@ const JobHuntPage = () => {
                   <CardTitle className="text-2xl">Weekly Plan</CardTitle>
                   <CardDescription>
                     Your personalized job search schedule
+                    {isInternational && (
+                      <Badge className="ml-2 bg-blue-500">International-friendly</Badge>
+                    )}
+                    {academicLevel !== 'all' && (
+                      <Badge className="ml-2">{academicLevel.charAt(0).toUpperCase() + academicLevel.slice(1)}</Badge>
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -83,15 +170,32 @@ const JobHuntPage = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-8 p-4 bg-pilot-blue-50 rounded-lg">
-                    <div className="flex items-center gap-3 mb-2">
-                      <CalendarIcon className="h-5 w-5 text-pilot-blue-500" />
-                      <div className="font-medium">Coming Soon</div>
+                  {isInternational && (
+                    <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Globe className="h-5 w-5 text-blue-500" />
+                        <div className="font-medium">International Student Features</div>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-2">
+                        Specialized resources for visa requirements and sponsorship opportunities
+                      </p>
+                      <Button variant="outline" size="sm" className="w-full mt-2">
+                        View OPT/CPT Resources
+                      </Button>
                     </div>
-                    <p className="text-sm text-gray-600">
-                      AI-powered recommendations based on your application success patterns
-                    </p>
-                  </div>
+                  )}
+                  
+                  {!isInternational && (
+                    <div className="mt-8 p-4 bg-pilot-blue-50 rounded-lg">
+                      <div className="flex items-center gap-3 mb-2">
+                        <CalendarIcon className="h-5 w-5 text-pilot-blue-500" />
+                        <div className="font-medium">Coming Soon</div>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        AI-powered recommendations based on your application success patterns
+                      </p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
