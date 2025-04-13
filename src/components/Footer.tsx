@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -13,7 +14,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="mt-4 text-sm text-foreground/70">
-              Helping international students navigate the U.S. job market with real-time intelligence and networking tools.
+              Helping students navigate the job market with real-time intelligence and powerful networking tools.
             </p>
           </div>
           

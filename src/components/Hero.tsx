@@ -41,7 +41,7 @@ const Hero = () => {
             Navigate Your <span className="gradient-text">Career Path</span> With Confidence
           </h1>
           <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-            Empowering college students at every stage to find the perfect job opportunities tailored to their academic level and background.
+            Empowering every college student to find perfect job opportunities tailored to their academic level and career aspirations.
           </p>
         </div>
 

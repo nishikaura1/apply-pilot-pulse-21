@@ -10,10 +10,10 @@ const InternationalSection = () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            International Student <span className="gradient-text">Resources</span>
+            Student <span className="gradient-text">Career Resources</span>
           </h2>
           <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
-            Specialized tools and opportunities for international students navigating the unique challenges of finding employment in the United States.
+            Comprehensive tools and opportunities for students navigating complex job markets and seeking tailored career support.
           </p>
         </div>
 
