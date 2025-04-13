@@ -8,43 +8,43 @@ import HiringVelocity from "@/components/HiringVelocity";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, ThumbsUp, ThumbsDown, Bell } from "lucide-react";
+import { MessageSquare, ThumbsUp, ThumbsDown, Bell, GraduationCap, Briefcase } from "lucide-react";
 
 const MarketIntelPage = () => {
   const crowdsourcedInsights = [
     {
-      company: "TechNova",
-      role: "Frontend Developer",
-      insight: "Hiring manager was friendly and focused on portfolio projects. They ask system design questions in the final round.",
-      helpful: 24,
+      company: "Google",
+      role: "Software Engineering Intern",
+      insight: "Interviewer focused on algorithms and data structures. They ask system design questions even for internships.",
+      helpful: 31,
       date: "2 days ago"
     },
     {
-      company: "DataFlow AI",
-      role: "Data Engineer",
-      insight: "Got ghosted after the second interview. HR seemed disorganized throughout the process.",
-      helpful: 18,
+      company: "Microsoft",
+      role: "Data Science Intern",
+      insight: "Very organized process. Three interview rounds with questions focused on Python, statistics, and past projects.",
+      helpful: 24,
       date: "4 days ago"
     },
     {
-      company: "NexGen",
-      role: "Product Manager",
-      insight: "They prioritize OPT candidates and have a history of H1B sponsorship. Very friendly team.",
+      company: "Amazon",
+      role: "Product Management Intern",
+      insight: "They prioritize OPT candidates and have a history of H1B sponsorship. Very case-study oriented.",
       helpful: 32,
       date: "1 week ago"
     },
     {
-      company: "Quantum Labs",
-      role: "Machine Learning Engineer",
-      insight: "Technical interview was challenging but fair. They focus on practical experience over theoretical knowledge.",
-      helpful: 15,
+      company: "Meta",
+      role: "ML Engineering Intern",
+      insight: "Technical interview was challenging but fair. Focus on machine learning fundamentals and practical implementation.",
+      helpful: 19,
       date: "1 week ago"
     }
   ];
 
   const lowCompetitionJobs = [
     {
-      role: "Full Stack Developer",
+      role: "Software Engineering Intern",
       company: "FinTech Startup",
       location: "Remote",
       applicants: 8,
@@ -53,7 +53,7 @@ const MarketIntelPage = () => {
       expires: "5 days"
     },
     {
-      role: "Data Analyst",
+      role: "Data Analyst Intern",
       company: "Health Analytics Inc",
       location: "Boston, MA",
       applicants: 12,
@@ -62,7 +62,7 @@ const MarketIntelPage = () => {
       expires: "4 days"
     },
     {
-      role: "UX Designer",
+      role: "UX Design Intern",
       company: "Creative Tech",
       location: "San Francisco, CA (Hybrid)",
       applicants: 15,
@@ -79,16 +79,19 @@ const MarketIntelPage = () => {
       <main className="flex-grow py-8">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2 text-foreground">Market Intelligence Hub</h1>
+            <h1 className="text-3xl font-bold mb-2 text-foreground flex items-center gap-2">
+              <GraduationCap className="h-7 w-7 text-primary" />
+              Internship Market Intelligence Hub
+            </h1>
             <p className="text-muted-foreground">
-              Real-time insights to help you make strategic decisions about your job search
+              Real-time insights to help you find and secure the best internship opportunities with visa sponsorship
             </p>
           </div>
           
           <Tabs defaultValue="heatmap" className="space-y-8">
             <TabsList className="w-full justify-start border-b pb-0 bg-transparent">
               <TabsTrigger value="heatmap" className="data-[state=active]:border-b-2 data-[state=active]:border-pilot-blue-500 rounded-none">
-                Live Heatmap
+                Internship Heatmap
               </TabsTrigger>
               <TabsTrigger value="resume" className="data-[state=active]:border-b-2 data-[state=active]:border-pilot-blue-500 rounded-none">
                 Resume Ranking
@@ -119,9 +122,12 @@ const MarketIntelPage = () => {
             <TabsContent value="insights" className="mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Crowdsourced Insights</CardTitle>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                    Internship Interview Insights
+                  </CardTitle>
                   <CardDescription>
-                    Anonymous insights from candidates who have interviewed with these companies
+                    Anonymous insights from students who have interviewed for internships with these companies
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -154,7 +160,7 @@ const MarketIntelPage = () => {
                     
                     <div className="mt-6 border-t pt-6">
                       <div className="flex justify-between items-center">
-                        <h4 className="font-medium">Share Your Experience</h4>
+                        <h4 className="font-medium">Share Your Internship Experience</h4>
                         <Button className="bg-pilot-blue-500 text-white">
                           <MessageSquare className="h-4 w-4 mr-2" />
                           <span>Add Insight</span>
@@ -169,9 +175,12 @@ const MarketIntelPage = () => {
             <TabsContent value="alerts" className="mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Low Competition Alerts</CardTitle>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Briefcase className="h-5 w-5 text-primary" />
+                    Low Competition Internships
+                  </CardTitle>
                   <CardDescription>
-                    Opportunities with fewer applicants than average - higher chances of getting noticed
+                    Internship opportunities with fewer applicants than average - higher chances of getting noticed
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -211,8 +220,8 @@ const MarketIntelPage = () => {
                       <div className="flex items-center gap-3">
                         <Bell className="h-5 w-5 text-pilot-blue-500" />
                         <div>
-                          <div className="font-medium">Get Low Competition Alerts</div>
-                          <div className="text-sm text-gray-600">Be the first to know about opportunities with few applicants</div>
+                          <div className="font-medium">Get Low Competition Internship Alerts</div>
+                          <div className="text-sm text-gray-600">Be the first to know about internship opportunities with few applicants</div>
                         </div>
                       </div>
                       <Button className="bg-pilot-blue-500 text-white">
@@ -233,4 +242,3 @@ const MarketIntelPage = () => {
 };
 
 export default MarketIntelPage;
-

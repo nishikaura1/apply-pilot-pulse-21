@@ -3,7 +3,7 @@ import React from "react";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, GraduationCap } from "lucide-react";
 
 export interface Company {
   name: string;
@@ -27,9 +27,12 @@ const CompanyHiringList = ({ isOpen, onClose, companies, role }: CompanyHiringLi
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>Companies hiring for {role}</DialogTitle>
+            <DialogTitle className="flex items-center gap-2">
+              <GraduationCap className="h-5 w-5 text-primary" />
+              Companies hiring for {role}
+            </DialogTitle>
             <DialogDescription>
-              No companies found hiring for this role currently. Try refreshing the data or check back later.
+              No companies found hiring for this internship role currently. Try refreshing the data or check back later.
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end mt-4">
@@ -44,9 +47,12 @@ const CompanyHiringList = ({ isOpen, onClose, companies, role }: CompanyHiringLi
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Companies hiring for {role}</DialogTitle>
+          <DialogTitle className="flex items-center gap-2">
+            <GraduationCap className="h-5 w-5 text-primary" />
+            Companies hiring for {role}
+          </DialogTitle>
           <DialogDescription>
-            Found {companies.length} companies currently hiring for this role
+            Found {companies.length} companies currently hiring for this internship role
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4">
