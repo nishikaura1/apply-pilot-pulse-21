@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarketIntel from "@/components/MarketIntel";
@@ -9,8 +8,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, ThumbsUp, ThumbsDown, Bell, GraduationCap, Briefcase } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const MarketIntelPage = () => {
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState("heatmap");
+  
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const tab = searchParams.get("tab");
+    
+    if (tab && ["heatmap", "resume", "hiring", "insights", "alerts"].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, [location]);
+
   const crowdsourcedInsights = [
     {
       company: "Google",
@@ -88,7 +100,7 @@ const MarketIntelPage = () => {
             </p>
           </div>
           
-          <Tabs defaultValue="heatmap" className="space-y-8">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
             <TabsList className="w-full justify-start border-b pb-0 bg-transparent">
               <TabsTrigger value="heatmap" className="data-[state=active]:border-b-2 data-[state=active]:border-pilot-blue-500 rounded-none">
                 Internship Heatmap

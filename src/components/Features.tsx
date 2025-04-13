@@ -3,8 +3,11 @@ import React from "react";
 import { BarChart3, Award, Clock, Users, Bell } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { useNavigate } from "react-router-dom";
 
 const Features = () => {
+  const navigate = useNavigate();
+  
   const features = [
     {
       icon: <BarChart3 className="h-12 w-12 text-primary p-2 rounded-xl" />,
@@ -12,6 +15,7 @@ const Features = () => {
       description: "Track trending roles in real-time",
       hoverDescription: "Visualize application volume and competition for roles across industries",
       gradient: "from-primary/20 to-primary/5",
+      path: "/market-intel?tab=heatmap"
     },
     {
       icon: <Award className="h-12 w-12 text-accent p-2 rounded-xl" />,
@@ -19,6 +23,7 @@ const Features = () => {
       description: "Get to the top 10%",
       hoverDescription: "See how your resume scores against other applicants with AI-powered analysis",
       gradient: "from-accent/20 to-accent/5",
+      path: "/market-intel?tab=resume"
     },
     {
       icon: <Clock className="h-12 w-12 text-secondary p-2 rounded-xl" />,
@@ -26,6 +31,7 @@ const Features = () => {
       description: "Find fast-responding companies",
       hoverDescription: "Discover employers with the quickest application-to-offer timelines",
       gradient: "from-secondary/20 to-secondary/5",
+      path: "/market-intel?tab=hiring"
     },
     {
       icon: <Users className="h-12 w-12 text-primary p-2 rounded-xl" />,
@@ -33,6 +39,7 @@ const Features = () => {
       description: "Connect to opportunities",
       hoverDescription: "Map your professional connections to find referrals at target companies",
       gradient: "from-primary/20 to-primary/5",
+      path: "/referrals"
     },
     {
       icon: <Bell className="h-12 w-12 text-accent p-2 rounded-xl" />,
@@ -40,8 +47,13 @@ const Features = () => {
       description: "Get notified of opportunities",
       hoverDescription: "Receive alerts about promising positions with fewer applicants",
       gradient: "from-accent/20 to-accent/5",
+      path: "/market-intel?tab=alerts"
     },
   ];
+
+  const handleCardClick = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <div className="py-20 md:py-28 bg-background">
@@ -59,7 +71,10 @@ const Features = () => {
           {features.map((feature, index) => (
             <HoverCard key={index}>
               <HoverCardTrigger asChild>
-                <Card className={`overflow-hidden border border-border/30 bg-gradient-to-br ${feature.gradient} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer h-[220px]`}>
+                <Card 
+                  className={`overflow-hidden border border-border/30 bg-gradient-to-br ${feature.gradient} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer h-[220px]`}
+                  onClick={() => handleCardClick(feature.path)}
+                >
                   <div className="h-1 w-full bg-gradient-to-r from-primary/50 to-accent/30"></div>
                   <CardContent className="p-6 flex flex-col items-center justify-center h-full text-center">
                     <div className="mb-4 bg-background/10 p-3 rounded-full">{feature.icon}</div>
