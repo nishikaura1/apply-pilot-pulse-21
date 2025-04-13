@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TrendingUp, TrendingDown, RefreshCw } from "lucide-react";
@@ -6,34 +7,21 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip } from "recharts";
 import { useToast } from "@/components/ui/use-toast";
 import { useQuery } from "@tanstack/react-query";
-
-// Interface for the role data
-interface RoleData {
-  title: string;
-  change: string;
-  direction: "up" | "down";
-  companies: number;
-  percentValue: number;
-}
-
-// Sample data in case the API fails - moved up before use
-const getSampleTrendingRoles = (): RoleData[] => [
-  { title: "Full Stack Developer", change: "+48%", direction: "up", companies: 37, percentValue: 48 },
-  { title: "Product Designer", change: "+35%", direction: "up", companies: 24, percentValue: 35 },
-  { title: "Data Scientist", change: "+31%", direction: "up", companies: 19, percentValue: 31 },
-  { title: "Growth Marketer", change: "+27%", direction: "up", companies: 22, percentValue: 27 },
-  { title: "DevOps Engineer", change: "+24%", direction: "up", companies: 15, percentValue: 24 },
-  { title: "Frontend Developer", change: "+22%", direction: "up", companies: 28, percentValue: 22 },
-  { title: "Backend Developer", change: "+19%", direction: "up", companies: 25, percentValue: 19 },
-  { title: "UX/UI Designer", change: "+16%", direction: "up", companies: 18, percentValue: 16 },
-  { title: "Project Manager", change: "-18%", direction: "down", companies: 12, percentValue: 18 },
-  { title: "QA Engineer", change: "-15%", direction: "down", companies: 8, percentValue: 15 },
-  { title: "Content Writer", change: "-12%", direction: "down", companies: 10, percentValue: 12 },
-  { title: "Office Manager", change: "-10%", direction: "down", companies: 5, percentValue: 10 },
-];
+import CompanyHiringList, { Company } from "./CompanyHiringList";
+import { 
+  RoleData, 
+  getSampleTrendingRoles, 
+  processJobsData, 
+  getCompaniesForRole 
+} from "@/utils/marketIntelUtils";
 
 const MarketIntel = () => {
   const { toast } = useToast();
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [showCompanies, setShowCompanies] = useState(false);
+  
+  // Store the raw API response to use for company lookups
+  const [rawJobData, setRawJobData] = useState<any[]>([]);
   
   // Fetch role data from API
   const { data: trendingRoles, isLoading, error, refetch } = useQuery({
@@ -44,9 +32,11 @@ const MarketIntel = () => {
         const response = await fetch('https://remoteok.com/api');
         const data = await response.json();
         
+        // Store the raw data for company lookups
+        setRawJobData(data);
+        
         // Process the data to create our trending roles
-        const processedData = processJobsData(data);
-        return processedData;
+        return processJobsData(data);
       } catch (error) {
         console.error("Error fetching job data:", error);
         toast({
@@ -62,88 +52,6 @@ const MarketIntel = () => {
     refetchOnWindowFocus: false,
   });
 
-  // Process job data into our format
-  const processJobsData = (jobsData: any[]): RoleData[] => {
-    // Skip the first item which is usually metadata
-    const jobs = jobsData.slice(1);
-    
-    // Count occurrences of each job category
-    const categoryCounts: Record<string, number> = {};
-    jobs.forEach(job => {
-      if (job.position) {
-        // Normalize the job title
-        const normalizedPosition = normalizeJobTitle(job.position);
-        categoryCounts[normalizedPosition] = (categoryCounts[normalizedPosition] || 0) + 1;
-      }
-    });
-    
-    // Convert to array and sort
-    const sortedCategories = Object.entries(categoryCounts)
-      .filter(([title, count]) => count > 1) // Only include roles with multiple listings
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 12); // Take top 12 roles
-    
-    // Create trending data
-    const trendingUp = sortedCategories.slice(0, 8).map(([title, count], index) => {
-      const percentChange = 15 + Math.floor(Math.random() * 35); // Random percent between 15-50%
-      return {
-        title,
-        change: `+${percentChange}%`,
-        direction: "up" as const,
-        companies: count,
-        percentValue: percentChange
-      };
-    });
-    
-    // Create trending down data from the bottom of our list
-    const trendingDown = sortedCategories.slice(-4).map(([title, count], index) => {
-      const percentChange = 10 + Math.floor(Math.random() * 15); // Random percent between 10-25%
-      return {
-        title,
-        change: `-${percentChange}%`,
-        direction: "down" as const,
-        companies: count,
-        percentValue: percentChange
-      };
-    });
-    
-    return [...trendingUp, ...trendingDown];
-  };
-  
-  // Normalize job titles to group similar positions
-  const normalizeJobTitle = (title: string): string => {
-    title = title.toLowerCase();
-    
-    if (title.includes("frontend") || title.includes("front-end") || title.includes("front end")) {
-      return "Frontend Developer";
-    } else if (title.includes("backend") || title.includes("back-end") || title.includes("back end")) {
-      return "Backend Developer";
-    } else if (title.includes("full") && (title.includes("stack") || title.includes("developer"))) {
-      return "Full Stack Developer";
-    } else if (title.includes("data") && (title.includes("scientist") || title.includes("science"))) {
-      return "Data Scientist";
-    } else if (title.includes("product") && title.includes("design")) {
-      return "Product Designer";
-    } else if (title.includes("devops")) {
-      return "DevOps Engineer";
-    } else if (title.includes("qa") || title.includes("quality")) {
-      return "QA Engineer";
-    } else if (title.includes("content") && title.includes("writ")) {
-      return "Content Writer";
-    } else if (title.includes("project") && title.includes("manag")) {
-      return "Project Manager";
-    } else if (title.includes("ui") || title.includes("ux") || title.includes("design")) {
-      return "UX/UI Designer";
-    } else if (title.includes("marketing")) {
-      return "Marketing Specialist";
-    } else if (title.includes("mobile") || title.includes("android") || title.includes("ios")) {
-      return "Mobile Developer";
-    } else {
-      // Return the original title if no match
-      return title.charAt(0).toUpperCase() + title.slice(1);
-    }
-  };
-
   // Handle manual refresh
   const handleRefresh = () => {
     refetch();
@@ -151,6 +59,18 @@ const MarketIntel = () => {
       title: "Refreshing data",
       description: "Fetching the latest market trends...",
     });
+  };
+
+  // Handle role click to show companies
+  const handleRoleClick = (role: string) => {
+    setSelectedRole(role);
+    setShowCompanies(true);
+  };
+
+  // Get companies for the selected role
+  const getCompaniesHiring = (): Company[] => {
+    if (!selectedRole || !rawJobData.length) return [];
+    return getCompaniesForRole(rawJobData, selectedRole);
   };
 
   return (
@@ -161,7 +81,8 @@ const MarketIntel = () => {
             <div>
               <CardTitle className="text-2xl text-foreground">Live Heatmap</CardTitle>
               <CardDescription className="text-muted-foreground">
-                Real-time data showing roles with significant changes in application volume
+                Real-time data showing roles with significant changes in application volume. 
+                Click on any role to see companies hiring.
               </CardDescription>
             </div>
             <button 
@@ -207,10 +128,11 @@ const MarketIntel = () => {
                       .map((role, index) => (
                         <div 
                           key={index} 
-                          className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r"
+                          className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r cursor-pointer hover:opacity-90 transition-opacity"
                           style={{
                             backgroundImage: `linear-gradient(to right, rgba(0, 102, 255, ${index * 0.05 + 0.1}), rgba(128, 0, 255, ${index * 0.05 + 0.1}))`,
                           }}
+                          onClick={() => handleRoleClick(role.title)}
                         >
                           <div>
                             <div className="font-medium text-white">{role.title}</div>
@@ -230,7 +152,8 @@ const MarketIntel = () => {
                       .map((role, index) => (
                         <div 
                           key={index} 
-                          className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-red-900/20 to-red-900/10"
+                          className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-red-900/20 to-red-900/10 cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => handleRoleClick(role.title)}
                         >
                           <div>
                             <div className="font-medium text-red-200">{role.title}</div>
@@ -264,6 +187,11 @@ const MarketIntel = () => {
                           fill: role.direction === "up" ? "#3b82f6" : "#ef4444",
                         }))}
                         margin={{ top: 10, right: 10, left: 10, bottom: 100 }}
+                        onClick={(data) => {
+                          if (data && data.activePayload && data.activePayload[0]) {
+                            handleRoleClick(data.activePayload[0].payload.name);
+                          }
+                        }}
                       >
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis 
@@ -293,6 +221,9 @@ const MarketIntel = () => {
                                   <p className="text-sm text-muted-foreground">
                                     {data.direction === "up" ? "+" : "-"}{data.value}% change
                                   </p>
+                                  <p className="text-xs text-muted-foreground mt-1">
+                                    Click to see companies hiring
+                                  </p>
                                 </div>
                               );
                             }
@@ -320,6 +251,16 @@ const MarketIntel = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Companies hiring dialog */}
+      {selectedRole && (
+        <CompanyHiringList
+          isOpen={showCompanies}
+          onClose={() => setShowCompanies(false)}
+          companies={getCompaniesHiring()}
+          role={selectedRole}
+        />
+      )}
     </div>
   );
 };
