@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ArrowRight, FileText, Search, CheckCircle, Users, Star } from "lucide-react";
+import { ArrowRight, FileText, Search, CheckCircle, Users, Star, FilePenLine } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [
@@ -8,31 +8,31 @@ const HowItWorks = () => {
       id: 1,
       icon: <FileText className="h-8 w-8 text-primary" />,
       title: "Build Your Profile",
-      description: "Create your international student profile with visa status and academic details"
+      description: "Create your comprehensive profile with your expertise, visa requirements, and career goals"
     },
     {
       id: 2,
       icon: <Search className="h-8 w-8 text-primary" />,
       title: "Discover Opportunities",
-      description: "Browse visa-friendly companies and positions tailored to your background"
+      description: "Browse visa-sponsoring companies and positions tailored to your background"
     },
     {
       id: 3,
-      icon: <CheckCircle className="h-8 w-8 text-primary" />,
+      icon: <FilePenLine className="h-8 w-8 text-primary" />,
       title: "Optimize Applications",
-      description: "Use AI-powered tools to customize resumes and prepare for interviews"
+      description: "Use AI-powered tools to create industry-specific, ATS-readable resumes that get noticed"
     },
     {
       id: 4,
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Connect with Alumni",
-      description: "Network with successful international students who share your journey"
+      title: "Connect with Sponsors",
+      description: "Network with companies that have a proven track record of visa sponsorships"
     },
     {
       id: 5,
       icon: <Star className="h-8 w-8 text-primary" />,
       title: "Land Your Dream Job",
-      description: "Successfully navigate the job market with sponsor-friendly employers"
+      description: "Successfully navigate the job market with visa-sponsoring employers"
     }
   ];
 
@@ -41,10 +41,10 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Path to <span className="gradient-text">Career Success</span>
+            Your Path to <span className="gradient-text">Sponsored Employment</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our streamlined approach helps international students navigate the U.S. job market with confidence
+            Our streamlined approach helps all job seekers find sponsorship opportunities with confidence
           </p>
         </div>
 
