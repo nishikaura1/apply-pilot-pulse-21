@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,6 +15,22 @@ interface RoleData {
   companies: number;
   percentValue: number;
 }
+
+// Sample data in case the API fails - moved up before use
+const getSampleTrendingRoles = (): RoleData[] => [
+  { title: "Full Stack Developer", change: "+48%", direction: "up", companies: 37, percentValue: 48 },
+  { title: "Product Designer", change: "+35%", direction: "up", companies: 24, percentValue: 35 },
+  { title: "Data Scientist", change: "+31%", direction: "up", companies: 19, percentValue: 31 },
+  { title: "Growth Marketer", change: "+27%", direction: "up", companies: 22, percentValue: 27 },
+  { title: "DevOps Engineer", change: "+24%", direction: "up", companies: 15, percentValue: 24 },
+  { title: "Frontend Developer", change: "+22%", direction: "up", companies: 28, percentValue: 22 },
+  { title: "Backend Developer", change: "+19%", direction: "up", companies: 25, percentValue: 19 },
+  { title: "UX/UI Designer", change: "+16%", direction: "up", companies: 18, percentValue: 16 },
+  { title: "Project Manager", change: "-18%", direction: "down", companies: 12, percentValue: 18 },
+  { title: "QA Engineer", change: "-15%", direction: "down", companies: 8, percentValue: 15 },
+  { title: "Content Writer", change: "-12%", direction: "down", companies: 10, percentValue: 12 },
+  { title: "Office Manager", change: "-10%", direction: "down", companies: 5, percentValue: 10 },
+];
 
 const MarketIntel = () => {
   const { toast } = useToast();
@@ -128,22 +143,6 @@ const MarketIntel = () => {
       return title.charAt(0).toUpperCase() + title.slice(1);
     }
   };
-
-  // Sample data in case the API fails
-  const getSampleTrendingRoles = (): RoleData[] => [
-    { title: "Full Stack Developer", change: "+48%", direction: "up", companies: 37, percentValue: 48 },
-    { title: "Product Designer", change: "+35%", direction: "up", companies: 24, percentValue: 35 },
-    { title: "Data Scientist", change: "+31%", direction: "up", companies: 19, percentValue: 31 },
-    { title: "Growth Marketer", change: "+27%", direction: "up", companies: 22, percentValue: 27 },
-    { title: "DevOps Engineer", change: "+24%", direction: "up", companies: 15, percentValue: 24 },
-    { title: "Frontend Developer", change: "+22%", direction: "up", companies: 28, percentValue: 22 },
-    { title: "Backend Developer", change: "+19%", direction: "up", companies: 25, percentValue: 19 },
-    { title: "UX/UI Designer", change: "+16%", direction: "up", companies: 18, percentValue: 16 },
-    { title: "Project Manager", change: "-18%", direction: "down", companies: 12, percentValue: 18 },
-    { title: "QA Engineer", change: "-15%", direction: "down", companies: 8, percentValue: 15 },
-    { title: "Content Writer", change: "-12%", direction: "down", companies: 10, percentValue: 12 },
-    { title: "Office Manager", change: "-10%", direction: "down", companies: 5, percentValue: 10 },
-  ];
 
   // Handle manual refresh
   const handleRefresh = () => {
