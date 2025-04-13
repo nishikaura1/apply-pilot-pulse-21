@@ -133,15 +133,15 @@ const MarketIntelPage = () => {
                 <CardContent>
                   <div className="space-y-6">
                     {crowdsourcedInsights.map((insight, index) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-4">
+                      <div key={index} className="bg-gray-50 dark:bg-gray-900/40 rounded-lg p-4">
                         <div className="flex justify-between mb-2">
-                          <div className="font-medium">{insight.company}</div>
-                          <div className="text-sm text-gray-500">{insight.date}</div>
+                          <div className="font-medium text-foreground">{insight.company}</div>
+                          <div className="text-sm text-muted-foreground">{insight.date}</div>
                         </div>
-                        <div className="text-sm text-gray-700 mb-2">Role: {insight.role}</div>
-                        <p className="mb-4">"{insight.insight}"</p>
+                        <div className="text-sm text-muted-foreground mb-2">Role: {insight.role}</div>
+                        <p className="mb-4 text-foreground">{insight.insight}</p>
                         <div className="flex justify-between items-center">
-                          <div className="text-sm text-gray-500">
+                          <div className="text-sm text-muted-foreground">
                             <span>{insight.helpful} found helpful</span>
                           </div>
                           <div className="flex gap-2">
