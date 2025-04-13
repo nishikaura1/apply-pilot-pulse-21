@@ -51,7 +51,7 @@ const HiringVelocity = () => {
     <div className="py-8">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Hiring Velocity Tracker</CardTitle>
+          <CardTitle className="text-2xl text-foreground">Hiring Velocity Tracker</CardTitle>
           <CardDescription>
             Companies with the fastest response times from application to offer
           </CardDescription>
@@ -60,42 +60,45 @@ const HiringVelocity = () => {
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
               <Award className="h-5 w-5 text-amber-500" />
-              <h3 className="font-medium">Top Responsive Companies</h3>
+              <h3 className="font-medium text-foreground">Top Responsive Companies</h3>
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Based on crowdsourced data from successful applicants in the last 30 days
             </p>
           </div>
 
           <div className="space-y-4">
             {fastCompanies.map((company, index) => (
-              <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg">
+              <div 
+                key={index} 
+                className="flex items-center p-4 bg-gray-50 dark:bg-gray-900/40 rounded-lg border dark:border-gray-800 hover:shadow-md transition-shadow"
+              >
                 <div className={`h-12 w-12 rounded-lg text-white flex items-center justify-center font-bold ${company.color}`}>
                   {company.logo}
                 </div>
                 <div className="ml-4 flex-grow">
-                  <div className="font-medium">{company.name}</div>
-                  <div className="text-sm text-gray-600">Visa-friendly startup</div>
+                  <div className="font-medium text-foreground">{company.name}</div>
+                  <div className="text-sm text-muted-foreground">Visa-friendly startup</div>
                 </div>
                 <div className="flex gap-4 text-sm">
                   <div className="flex flex-col items-center">
-                    <div className="text-xs text-gray-500">First Response</div>
-                    <div className="font-medium">{company.responseTime}</div>
+                    <div className="text-xs text-muted-foreground">First Response</div>
+                    <div className="font-medium text-foreground">{company.responseTime}</div>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="text-xs text-gray-500">To Interview</div>
-                    <div className="font-medium">{company.interviewTime}</div>
+                    <div className="text-xs text-muted-foreground">To Interview</div>
+                    <div className="font-medium text-foreground">{company.interviewTime}</div>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="text-xs text-gray-500">To Offer</div>
-                    <div className="font-medium">{company.offerTime}</div>
+                    <div className="text-xs text-muted-foreground">To Offer</div>
+                    <div className="font-medium text-foreground">{company.offerTime}</div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-600">
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Clock className="h-4 w-4" />
             <span>Data updated weekly based on user reports</span>
           </div>

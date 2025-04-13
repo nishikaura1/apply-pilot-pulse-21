@@ -133,7 +133,10 @@ const MarketIntelPage = () => {
                 <CardContent>
                   <div className="space-y-6">
                     {crowdsourcedInsights.map((insight, index) => (
-                      <div key={index} className="bg-gray-50 dark:bg-gray-900/40 rounded-lg p-4">
+                      <div 
+                        key={index} 
+                        className="bg-gray-50 dark:bg-gray-900/40 rounded-lg p-4 border dark:border-gray-800"
+                      >
                         <div className="flex justify-between mb-2">
                           <div className="font-medium text-foreground">{insight.company}</div>
                           <div className="text-sm text-muted-foreground">{insight.date}</div>
@@ -186,29 +189,32 @@ const MarketIntelPage = () => {
                 <CardContent>
                   <div className="space-y-6">
                     {lowCompetitionJobs.map((job, index) => (
-                      <div key={index} className="border rounded-lg overflow-hidden bg-white">
+                      <div 
+                        key={index} 
+                        className="border rounded-lg overflow-hidden bg-white dark:bg-gray-900/40 hover:shadow-md transition-shadow"
+                      >
                         <div className="p-4">
                           <div className="flex justify-between items-start mb-2">
                             <div>
-                              <h4 className="font-medium text-lg">{job.role}</h4>
-                              <div className="text-gray-600">{job.company}</div>
+                              <h4 className="font-medium text-lg text-foreground">{job.role}</h4>
+                              <div className="text-muted-foreground">{job.company}</div>
                             </div>
-                            <div className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-medium">
+                            <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 text-sm px-3 py-1 rounded-full font-medium">
                               Low Competition
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                             <span>{job.location}</span>
                             <span>•</span>
                             <span>{job.posted}</span>
                             <span>•</span>
-                            <span className="text-pilot-purple-600 font-medium">{job.visa}</span>
+                            <span className="text-primary font-medium">{job.visa}</span>
                           </div>
                           <div className="flex justify-between items-center">
                             <div className="flex items-center">
-                              <span className="text-sm font-medium">Only {job.applicants} applicants</span>
+                              <span className="text-sm font-medium text-foreground">Only {job.applicants} applicants</span>
                               <span className="mx-2 text-gray-300">|</span>
-                              <span className="text-sm text-red-600">Expires in {job.expires}</span>
+                              <span className="text-sm text-destructive">Expires in {job.expires}</span>
                             </div>
                             <Button>Apply Now</Button>
                           </div>
