@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const SHEET_ID = "your-google-sheet-id"; // get from the Sheet URL
-const API_KEY = "your-google-api-key";
+const SHEET_ID = "1IYdbSjAIambgfkZiHs-7jjAA2j9o4ywDEqt3urxiNUA"; // get from the Sheet URL
+const API_KEY = "AIzaSyCom9yWf0ppDjW4zwlV7q1TW-XrCU9j9og";
 const RANGE = "Sheet1"; // name of your sheet tab
 
 const Jobs = () => {
