@@ -24,7 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/market-intel" element={<MarketIntelPage />} />
-            <Route path="/jobhunt" element={<JobHuntPage />} />
+            <Route path="/jobhunt" element={<Jobs />} />
             <Route path="/referrals" element={<ReferralsPage />} />
             <Route path="/international" element={<Navigate to="/job-hunt?international=true" replace />} />
             <Route path="*" element={<NotFound />} />
