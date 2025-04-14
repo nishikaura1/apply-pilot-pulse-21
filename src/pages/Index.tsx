@@ -80,6 +80,26 @@ const Index = () => {
             </div>
           </div>
         </section>
+        <section className="py-16 bg-background/50">
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-bold mb-12">
+      🚀 Available Jobs
+    </h2>
+
+    <div className="flex justify-center">
+     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQOTuPJwEuJ4W5TQJPQu_Avs07g_0YQIblAAHUwUe0jHzUseWjfOLzdQMjovK9mPqyJXuP4gP0_zm6X/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+        width="100%"
+        height="600"
+        style={{
+          border: "none",
+          borderRadius: "12px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+        }}
+      ></iframe>
+    </div>
+  </div>
+</section>
+
         
         {/* CTA Section */}
         <section className="py-16 md:py-24">
