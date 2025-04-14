@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Index from "./pages/Index";
 import MarketIntelPage from "./pages/MarketIntelPage";
-import JobHuntPage from "./pages/JobHuntPage";
+import Jobs from "./pages/Jobs";
 import ReferralsPage from "./pages/ReferralsPage";
 import NotFound from "./pages/NotFound";
 
@@ -24,7 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/market-intel" element={<MarketIntelPage />} />
-            <Route path="/jobs" element={<Jobs />} />
+            <Route path="/jobhunt" element={<JobHuntPage />} />
             <Route path="/referrals" element={<ReferralsPage />} />
             <Route path="/international" element={<Navigate to="/job-hunt?international=true" replace />} />
             <Route path="*" element={<NotFound />} />
