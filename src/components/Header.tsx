@@ -36,7 +36,7 @@ const Header = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <Link to="/job-hunt" className={navigationMenuTriggerStyle()}>
+                <Link to="/jobhunt" className={navigationMenuTriggerStyle()}>
                   Job Hunt
                 </Link>
               </NavigationMenuItem>
