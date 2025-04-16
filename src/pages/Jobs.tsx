@@ -26,7 +26,6 @@ const Jobs = () => {
     postedDate: row[4],
   };
 });
-        });
         setJobs(formattedJobs);
       } catch (error) {
         console.error("Error fetching jobs:", error);
