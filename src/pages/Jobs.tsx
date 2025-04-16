@@ -17,14 +17,15 @@ const Jobs = () => {
         );
         const rows = response.data.values; // Sheet rows
         const headers = rows[0];
-        const formattedJobs = rows.slice(1).map((row: string[]) => {
-          return {
-            title: row[0],
-            company: row[1],
-            location: row[2],
-            applyLink: row[3],
-            postedDate: row[4],
-          };
+          const formattedJobs = rows.slice(1).map((row: string[]) => {
+  return {
+    title: row[0],
+    company: row[1],
+    location: row[3],
+    applyLink: row[24],  
+    postedDate: row[4],
+  };
+});
         });
         setJobs(formattedJobs);
       } catch (error) {
